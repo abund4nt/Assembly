@@ -11,6 +11,7 @@ Most used operations.
 - `mov` move data into our of storage
 - `com` compare two pieces of data with each other
 - `test` some other properties of data
+- `pop` retrieves the value from the top of the stack and stores it into a specified register
 
 Example code to analyze which has some of the mentioned operations.
 
