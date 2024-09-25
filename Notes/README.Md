@@ -2,13 +2,15 @@
 
 ## Operations
 
-`add` some data together
-`sub` subtract some data
-`mul` multiply some data
-`div` divide some data
-`mov` move data into our of storage
-`com` compare two pieces of data with each other
-`test` some other properties of data
+Most used operations.
+
+- `add` some data together
+- `sub` subtract some data
+- `mul` multiply some data
+- `div` divide some data
+- `mov` move data into our of storage
+- `com` compare two pieces of data with each other
+- `test` some other properties of data
 
 Example code to analyze which has some of the mentioned operations.
 
