@@ -237,3 +237,29 @@ mov rcx, 0x10000
 mov [rcx], eax ; stores data as 75 | ca | 01 | c0
 mov bh, [rcx] ; reads 0x75
 ```
+
+`lea` is one of the few instructions that can directly access the rip register.
+
+```asm
+lea rax, [rip] ; load the address of the next instruction into rax
+lea rax, [rip+8] ; the address of the instruction, plus 8 bytes.
+```
+
+You can also use move to read directly from those locations.
+
+```asm
+mov rax, [rip] ; load 8 bytes from the location pointend to by the address of the next instruction
+```
+
+Or even write there.
+
+```asm
+mov [rip], rax
+```
+
+You can also write immediate values. However, you must specify their size.
+
+```asm
+mov rax, 133337
+mov DWORD PTR [rax], 0x1337
+```
