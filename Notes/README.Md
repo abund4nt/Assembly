@@ -13,6 +13,8 @@ Most used operations.
 - `test` some other properties of data
 - `pop` retrieves the value from the top of the stack and stores it into a specified register
 
+![](https://i.imgur.com/W9iqMkP.png)
+
 Example code to analyze which has some of the mentioned operations.
 
 ```asm
