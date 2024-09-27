@@ -192,3 +192,24 @@ Then the stack.
 ```
 
 > `push` decreases rsp, `pop` increases it.
+
+This will load the 64-bits value stored at memory address 0x12345 into `rbx`.
+
+```asm
+mov rax, 0x12345
+mov rbx, [rax]
+```
+
+This will store the 64-bit value in `rbx` into memory at address 0x133337.
+
+```asm
+mov rax, 0x133337
+mov [rax], rbx
+```
+
+This is equivalent to push `rcx`.
+
+```asm
+sub rsp, 4
+mov [rsp], rcx
+```
