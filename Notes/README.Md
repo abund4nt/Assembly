@@ -1,5 +1,3 @@
-# Notes
-
 ## Registers
 
 Generaral purpose registers.
@@ -65,4 +63,46 @@ Example code to analyze which has some of the mentioned operations.
 <+44>:    mov    eax,DWORD PTR [rbp-0x4]
 <+47>:    pop    rbp
 <+48>:    ret
+```
+
+## Memory
+
+Memory -> Registers
+Memory -> Disk
+Memory -> Network
+Memory -> Network
+Memory -> Video Card
+
+There is to much memory to name every location.
+
+Registers and immediates can be `push`ed onto the stack to save values.
+
+```asm
+mov rax, 0xc001ca75
+push rax
+push 0xb0bacafe
+push rax
+```
+
+Stack.
+
+```
+   +----------+                                                              
+   |          |                                                              
+   |          |                                                              
+   |  STACK   |                                                              
+   |          |                                                              
+   |          |                                                              
+   |          |                                                              
+   |----------|                                                              
+   |          |                                                             
+   | c001ca75 |                                                             
+   -----------|                                                              
+   |          |                                                              
+   | b0bacafe |                                                             
+   |----------|                                                              
+   |          |                 
+   | c001ca75 |                                                              
+   |          |                                                              
+   +----------+
 ```
