@@ -126,3 +126,69 @@ Then.
 |          |                                                              
 +----------+
 ```
+
+The CPU knows where the stack is because its address is stored in `rsp`. Example.
+
+- rsp = `0x7f01f3453050`
+
+```
++----------+                                                              
+|          |                                                              
+|          |                                                              
+|  STACK   |                                                              
+|----------|                                                              
+|          |                 
+| c001ca75 |                                                              
+|          |                                                              
++----------+
+```
+
+The instruction applies.
+
+```asm
+push 0xb0bacafe
+```
+
+- rsp = `0x7f01f3453048`
+
+Then the stack.
+
+```
++----------+                                                              
+|          |                                                              
+|          |                                                              
+|  STACK   |                                                              
+|----------|                                                              
+|          |                 
+| b0bacafe |                                                              
+|          |
+|----------|                                                              
+|          |                 
+| c001ca75 |                                                              
+|          |
++----------+
+```
+
+The instruction applies.
+
+```asm
+pop rcx
+```
+
+- rsp = `0x7f01f3453050`
+
+Then the stack.
+
+```
++----------+                                                              
+|          |                                                              
+|          |                                                              
+|  STACK   |                                                              
+|----------|                                                              
+|          |                 
+| c001ca75 |                                                              
+|          |                                                              
++----------+
+```
+
+> `push` decreases rsp, `pop` increases it.
