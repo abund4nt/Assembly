@@ -67,11 +67,11 @@ Example code to analyze which has some of the mentioned operations.
 
 ## Memory
 
-Memory -> Registers
-Memory -> Disk
-Memory -> Network
-Memory -> Network
-Memory -> Video Card
+- Memory -> Registers
+- Memory -> Disk
+- Memory -> Network
+- Memory -> Network
+- Memory -> Video Card
 
 There is to much memory to name every location.
 
