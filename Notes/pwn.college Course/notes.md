@@ -213,3 +213,27 @@ This is equivalent to push `rcx`.
 sub rsp, 4
 mov [rsp], rcx
 ```
+
+Load 64 bits from addr 0x12345 and store the lower 32 bits to addr 0x133337
+
+```asm
+mov rax, 0x12345
+mov rbx, [rax]
+mov rax, 0x133337
+mov [rax], ebx
+```
+
+Store 8 bits from `ah` to addr 0x12345
+
+```asm
+mov rax, 0x12345
+mov rbx, [ah]
+```
+Data on most modern systems is stored *backwards*, in *little endian*.
+
+```asm
+mov eax, 0xc001ca75 ; sets rax to c0 | 01 | ca | 75
+mov rcx, 0x10000
+mov [rcx], eax ; stores data as 75 | ca | 01 | c0
+mov bh, [rcx] ; reads 0x75
+```
