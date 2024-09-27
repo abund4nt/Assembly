@@ -19,6 +19,13 @@ On a 64-bit architectura (most) registers will hold 64 bits (8 bytes).
 01000101
 ```
 
+You can also `mov` data between registers. Ej: this set both `rax` and `rbx` to 0x539.
+
+```
+mov rax, 0x539
+mov rbx, rax
+```
+
 ## Operations
 
 Most used operations.
