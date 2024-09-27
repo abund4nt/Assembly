@@ -109,8 +109,8 @@ Then.
 Values can be `pop`ped back off the stack.
 
 ```asm
-pop rbx # sets rbx to 0xc001ca75
-pop rcx # sets rcx to 0xb0bacafe
+pop rbx ; sets rbx to 0xc001ca75
+pop rcx ; sets rcx to 0xb0bacafe
 ```
 
 Then.
