@@ -26,6 +26,13 @@ mov rax, 0x539
 mov rbx, rax
 ```
 
+Specials registers
+
+- rip = Instruction Pointer
+- rsp = Stack Pointer
+
+Some other registers are, by convention, used for important things.
+
 ## Operations
 
 Most used operations.
