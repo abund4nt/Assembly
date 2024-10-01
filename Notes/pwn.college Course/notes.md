@@ -263,3 +263,12 @@ You can also write immediate values. However, you must specify their size.
 mov rax, 133337
 mov DWORD PTR [rax], 0x1337
 ```
+
+## Registers first arguments
+
+- `rdi`: First argument
+- `rsi`: Second argument
+- `rdx`: Third argument
+- `rcx`: Four argument
+- `r8`: Fifth argument
+- `r9`: Sixth argument
