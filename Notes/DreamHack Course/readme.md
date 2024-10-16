@@ -54,3 +54,58 @@ rbx = 0x401A40
 ```
 
 Vemos que el registro `rbx` se inicializa con `0x401A40`. Mas abajo en la línea 1 la instruccion `mov rax, [rbx+8]` carga el valor de la dirección `0x401A48` (que es `0x0000000000C0FFEE`) en `rax`. En la línea 2 `lea rax, [rbx+8]` actualiza rax con la dirección 0x401A48 en lugar del contenido. Por lo tanto al finalizar la ejecución hasta la línea 2, el valor en rax sera `0x401A48`.
+
+Q3. **Given the registers, memory, and code, what is the value stored in rax when the code is executed up to line 1?**
+
+```asm
+[Register]
+rax = 0x31337
+rbx = 0x555555554000
+rcx = 0x2
+
+=================================
+
+[Memory]
+0x555555554000| 0x0000000000000000
+0x555555554008| 0x0000000000000001
+0x555555554010| 0x0000000000000003
+0x555555554018| 0x0000000000000005
+0x555555554020| 0x000000000003133A
+
+==================================
+
+[Code]
+1: add rax, [rbx+rcx*8]
+2: add rcx, 2
+3: sub rax, [rbx+rcx*8]
+4: inc rax
+```
+
+El registro `rax` se inicializa con el valor de `0x31337`, `rbx` con el valor de `0x555555554000` y `rcx` con `0x2`. En la linea una suma con la instruccion `add` al registro `rax` el valor de `rbx + rcx * 8`.
+
+```shell
+>>> rax = 0x31337
+>>> rbx = 0x555555554000
+>>> rcx = 0x2
+>>> hex(rbx + rcx * 8)
+'0x555555554010'
+```
+
+El resultado `0x555555554010` corresponde al valor `0x0000000000000003`.
+
+```
+[Memory]
+0x555555554000| 0x0000000000000000
+0x555555554008| 0x0000000000000001
+0x555555554010| 0x0000000000000003
+0x555555554018| 0x0000000000000005
+0x555555554020| 0x000000000003133A
+```
+
+Entonces la operacion seria `0x31337 + 0x0000000000000003`.
+
+```shell
+>>> hex(0x31337 + 0x0000000000000003)
+'0x3133a'
+```
+
