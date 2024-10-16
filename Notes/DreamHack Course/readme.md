@@ -53,4 +53,4 @@ rbx = 0x401A40
 2: lea rax, [rbx+8]
 ```
 
-Vemos que el registro `rbx `se inicializa con `0x401A40`. Mas abajo en la línea 1 la instruccion `mov rax, [rbx+8]` carga el valor de la dirección `0x401A48` (que es `0x0000000000C0FFEE`) en `rax`. En la línea 2 `lea rax, [rbx+8]` actualiza rax con la dirección 0x401A48 en lugar del contenido. Por lo tanto al finalizar la ejecución hasta la línea 2, el valor en rax sera `0x401A48`.
+Vemos que el registro `rbx` se inicializa con `0x401A40`. Mas abajo en la línea 1 la instruccion `mov rax, [rbx+8]` carga el valor de la dirección `0x401A48` (que es `0x0000000000C0FFEE`) en `rax`. En la línea 2 `lea rax, [rbx+8]` actualiza rax con la dirección 0x401A48 en lugar del contenido. Por lo tanto al finalizar la ejecución hasta la línea 2, el valor en rax sera `0x401A48`.
