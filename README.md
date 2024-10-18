@@ -5,3 +5,4 @@ In this repository there will be links to Assembly notes/resources/programs, in 
 ## Learning
 
 [pwn.college](https://pwn.college/fundamentals/assembly-crash-course/)
+[Dreamhack](https://dreamhack.io/lecture/roadmaps/all/system-hacking)
