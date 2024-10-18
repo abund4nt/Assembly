@@ -1,5 +1,7 @@
 Answers and explanation of the questionnaire done at the [DreamHack Assembly course](https://dreamhack.io/lecture/roadmaps/all).
 
+# Quiz: x86 Assembly 1
+
 Q1. **Given the registers, memory, and code, what is the value stored in rax when the code is executed up to line 1?**
 
 ```asm
