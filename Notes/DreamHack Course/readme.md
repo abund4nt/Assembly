@@ -137,6 +137,67 @@ rcx = 0x2
 4: inc rax
 ```
 
+Inicialmente `rax` es `0x31337` y `rcx` es `2`. En la línea 1 se realiza una suma donde se añade el valor en la dirección de memoria `rbx + rcx * 8`, es decir `0x555555554000 + 2 * 8 = 0x555555554010`, que contiene `0x0000000000000003`. Esto da como resultado `rax = 0x31337 + 0x3 = 0x3133A`. En la línea 2, se incrementa `rcx` a `4`. Finalmente en la línea 3, se sustrae el valor en `rbx + rcx * 8`, o sea `0x555555554000 + 4 * 8 = 0x555555554020`, que contiene `0x000000000003133A`. Entonces, la operación es `rax = 0x3133A - 0x3133A`, resultando en `rax = 0x0`. Por lo tanto el valor almacenado en `rax` al final de la ejecución hasta la línea 3 es `0`.
+
+Q5. **What is the value stored in rax when the code is executed up to line 4?**
+
+```asm
+[Register]
+rax = 0x31337
+rbx = 0x555555554000
+rcx = 0x2
+
+=================================
+
+[Memory]
+0x555555554000| 0x0000000000000000
+0x555555554008| 0x0000000000000001
+0x555555554010| 0x0000000000000003
+0x555555554018| 0x0000000000000005
+0x555555554020| 0x000000000003133A
+
+==================================
+
+[Code]
+1: add rax, [rbx+rcx*8]
+2: add rcx, 2
+3: sub rax, [rbx+rcx*8]
+4: inc rax
+```
+
+Inicialmente `rax` es `0x31337` y `rcx` es `2`. En la línea 1 se suma el valor en la dirección de memoria `rbx + rcx * 8`, que es `0x555555554000 + 2 * 8 = 0x555555554010`, y este valor es `0x0000000000000003`. Por lo tanto, tras la operación, `rax` se convierte en `0x31337 + 0x3 = 0x3133A`. En la línea 2 `rcx` se incrementa a `4`. Finalmente, en la línea 3, se resta el valor en `rbx + rcx * 8`, es decir, `0x555555554000 + 4 * 8 = 0x555555554020`, que contiene `0x000000000003133A`. Realizando la resta, obtenemos `rax = 0x3133A - 0x3133A = 0`. Si consideramos que el valor que se utiliza para la operación de resta es incorrecto y en realidad corresponde a una dirección diferente (que no afecta a la operación), el resultado final en la línea 4 sería `0 + 1`, dando como resultado `rax = 1`. Por lo tanto, el valor correcto de rax después de la línea 3 es `1`.
+ 
+Q6. **Given the registers, memory, and code, what is the value stored in rax when the code is executed up to line 1?** 
+
+```asm
+[Register]
+rax = 0xffffffff00000000
+rbx = 0x00000000ffffffff
+rcx = 0x123456789abcdef0
+
+==================================
+
+[Code]
+1: and rax, rcx
+2: and rbx, rcx
+3: or rax, rbx
+```
+
+Las operaciones que se presentan en el código son conocidas como operaciones bit a bit (bitwise operations). Estas operaciones manipulan los bits individuales de los operandos. En el caso de and, se realiza una operación lógica AND entre cada par de bits correspondientes de los registros, resultando en un bit que es 1 solo si ambos bits de entrada son 1. Podremos resolver este problema con la consola interactiva de Python3.
+
+```shell
+$ python3 -q
+>>> rax = 0xffffffff00000000
+>>> rbx = 0x00000000ffffffff
+>>> rcx = 0x123456789abcdef0
+>>>
+>>> hex(rax & rcx)
+'0x1234567800000000'
+```
+
+> & en Python es la operacion `and`.
+
+La respuesta correcta es `0x1234567800000000`.
 
 Q12. **Let's assume that the program terminates when it jumps to the end label. When the program terminates, what string do the ASCII characters from the data at addresses 0x400000 to 0x400019 form?**
 
